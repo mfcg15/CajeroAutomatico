@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Cajero Automático</title>
+  </head>
+  <body>
+    <div class="contenedor">
+      <div>
+        <h1>Cajero Automático</h1>
+      </div>
+      <div class="contenedorInferior">
+        <div class="contenedorLogSign" id="panelLogSign">
+          <div class="LogSign">
+            <div class="LogIn">
+              <h2 class="h2">Log In</h2>
+              <form action="" method="post" id="FormularioLogIn">
+                <div class="form">
+                  <div class="campo">
+                    <input
+                      type="number"
+                      required
+                      class="input"
+                      id="txt_dni_L"
+                    />
+                    <span class="barra"></span>
+                    <label class="label">DNI</label>
+                    <p class="validaciones" id="validarDNIL"></p>
+                  </div>
+                  <div class="campo">
+                    <input
+                      type="password"
+                      required
+                      class="input"
+                      id="txt_pass_L"
+                    />
+                    <span class="barra"></span>
+                    <label class="label">Password</label>
+                    <p class="validaciones" id="validarPassL"></p>
+                  </div>
+                  <div class="validarLogIn" id="ValidacionLog">
+                    <p class="validoLog" id="validarLog"></p>
+                  </div>
+                  <div class="campo">
+                    <button type="submit">Ingresar</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <hr />
+            <div class="SignUp">
+              <h2 class="h2">Sign Up</h2>
+              <form action="" method="post" id="FormularioSignUp">
+                <div class="form">
+                  <div class="campo">
+                    <input
+                      type="number"
+                      required
+                      class="input"
+                      id="txt_dni_S"
+                    />
+                    <span class="barra"></span>
+                    <label class="label">DNI</label>
+                    <p class="validaciones" id="validarDNI"></p>
+                  </div>
+                  <div class="campo">
+                    <input type="text" required class="input" id="txt_nombre" />
+                    <span class="barra"></span>
+                    <label class="label">Nombre</label>
+                    <p class="validaciones" id="validarNombre"></p>
+                  </div>
+                  <div class="campo">
+                    <input
+                      type="password"
+                      required
+                      class="input"
+                      id="txt_pass_S"
+                    />
+                    <span class="barra"></span>
+                    <label class="label">Password</label>
+                    <p class="validaciones" id="validarPass"></p>
+                  </div>
+                  <div class="campoSaldo">
+                    <input
+                      type="number"
+                      step="0.01"
+                      min="0"
+                      required
+                      class="inputSaldo"
+                      id="txt_saldo"
+                      placeholder="10"
+                      value="10"
+                    />
+                    <label class="labelSaldo">Saldo : </label>
+                    <span class="SimboloDolares">$</span>
+                    <p class="validacionSaldo" id="validarSaldor"></p>
+                  </div>
+                  <div class="campo">
+                    <button type="submit">Crear cuenta</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="MenuPrincipal" id="menuMain">
+            <div class="contenedorSuperiorMP">
+              <div class="Menu" id="menu">
+                <h2 class="h2">Menú</h2>
+                <h3 id="saludo"></h3>
+                <div class="opciones">
+                  <div class="btnopcion" onclick="ConsultarSaldo()">
+                    Consultar saldo
+                  </div>
+                  <div class="btnopcion" onclick="IngresarMonto()">
+                    Ingresar monto
+                  </div>
+                  <div class="btnopcion" onclick="RetirarMonto()">
+                    Retirar monto
+                  </div>
+                  <div class="btnopcion" onclick="Salir()">Salir</div>
+                </div>
+              </div>
+            </div>
+            <div class="contenedorInferiorMP">
+              <div class="Opcion1" id="op1">
+                <h2 class="h2">Consultar saldo</h2>
+                <p class="mostarSaldoTotal" id="SaldoActualO1"></p>
+                <button class="btnAccion" onclick="AceptarCS()">Aceptar</button>
+              </div>
+              <div class="Opcion2" id="op2">
+                <h2 class="h2">Ingresar Monto</h2>
+                <div class="campoMonto">
+                  <input
+                    type="number"
+                    step="0.01"
+                    required
+                    min="0"
+                    value="0"
+                    placeholder="0"
+                    class="inputIngresarMonto"
+                    id="txt_ingresar_monto"
+                  />
+                  <span class="SimboloIngresarMonto">$</span>
+                  <p class="validacionSaldo" id="validarSaldoOp2"></p>
+                </div>
+                <button class="btnAccion" onclick="AceptarIM()">Aceptar</button>
+                <p class="mostarSaldo" id="SaldoActualO2"></p>
+                <button class="btnAccion" onclick="SalirIM()">Salir</button>
+              </div>
+              <div class="Opcion3" id="op3">
+                <h2 class="h2">Retirar Monto</h2>
+                <div class="campoMonto">
+                  <input
+                    type="number"
+                    step="0.01"
+                    min="0"
+                    value="0"
+                    placeholder="0"
+                    required
+                    class="inputIngresarMonto"
+                    id="txt_retirar_monto"
+                  />
+                  <span class="SimboloIngresarMonto">$</span>
+                  <p class="validacionSaldo" id="validarSaldoOp3"></p>
+                </div>
+                <button class="btnAccion" onclick="AceptarRM()">Aceptar</button>
+                <p class="mostarSaldo" id="SaldoActualO3"></p>
+                <button class="btnAccion" onclick="SalirRM()">Salir</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="contenedorUsuarios">
+          <div class="MostrarUsuarios">
+            <h2 class="tituloTabla">Lista de usuarios</h2>
+            <table id="tablaUsuarios"></table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="cajero.js" type="text/javascript"></script>
+  </body>
+</html>
